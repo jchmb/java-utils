@@ -2,9 +2,9 @@ package nl.jchmb.utils.filter;
 
 import java.util.Collection;
 
-public class AcceptingFilter<T> implements CollectionFilter<T> {
+public class AcceptingFilter<T, U extends Collection<T>> implements Filter<T, U> {
 	@Override
-	public Collection<T> applyFilter(Collection<T> collection) {
+	public U applyFilter(U collection) {
 		return collection;
 	}
 }

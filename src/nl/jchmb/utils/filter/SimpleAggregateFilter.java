@@ -3,7 +3,7 @@ package nl.jchmb.utils.filter;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class SimpleAggregateFilter<T, U extends Iterable<T>> implements AggregateFilter<T, U> {
+public class SimpleAggregateFilter<T, U extends Collection<T>> implements AggregateFilter<T, U> {
 	private Collection<Filter<T, U>> filters;
 	
 	public SimpleAggregateFilter() {
