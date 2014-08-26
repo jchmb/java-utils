@@ -17,6 +17,7 @@ public class DefaultAlarmManager implements AlarmManager {
 
 	@Override
 	public void tryTrigger() {
+		/* Try to trigger each alarm. */
 		for (Alarm alarm : alarms) {
 			alarm.tryTrigger();
 		}
