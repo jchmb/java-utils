@@ -1,12 +1,9 @@
 package nl.jchmb.utils.alarm;
 
-import nl.jchmb.utils.event.Trigger;
-
-public class DefaultAlarm implements Alarm {
+public abstract class DefaultAlarm implements Alarm {
 	private long interval;
 	private long ticks = -1;
 	private boolean repeating;
-	private Trigger<AlarmEvent> trigger;
 	
 	public DefaultAlarm(long interval, boolean repeating) {
 		setInterval(interval);
@@ -25,9 +22,7 @@ public class DefaultAlarm implements Alarm {
 			} else {
 				ticks = -1;
 			}
-			if (trigger != null) {
-				trigger.trigger(generateEvent());
-			}
+			trigger();
 			return true;
 		}
 		return false;
@@ -41,11 +36,6 @@ public class DefaultAlarm implements Alarm {
 	@Override
 	public void setRepeating(boolean repeating) {
 		this.repeating = repeating;
-	}
-	
-	@Override
-	public void setTrigger(Trigger<AlarmEvent> trigger) {
-		this.trigger = trigger;
 	}
 	
 	public void stop() {
