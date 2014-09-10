@@ -12,7 +12,15 @@ public abstract class DefaultAlarm implements Alarm {
 	
 	@Override
 	public void rewind() {
-		this.ticks = System.currentTimeMillis() + interval;
+		setTicks(System.currentTimeMillis() + getInterval());
+	}
+	
+	protected long getInterval() {
+		return interval;
+	}
+	
+	protected void setTicks(long ticks) {
+		this.ticks = ticks;
 	}
 	
 	public boolean tryTrigger() {
