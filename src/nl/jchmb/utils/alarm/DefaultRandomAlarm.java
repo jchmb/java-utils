@@ -13,7 +13,11 @@ public abstract class DefaultRandomAlarm extends DefaultAlarm {
 	protected long getInterval() {
 		long generatedInterval;
 		Random random = new Random();
-		generatedInterval = random.nextLong() % randomInterval;
+		if (randomInterval > 0) {
+			generatedInterval = Math.abs(random.nextLong() % randomInterval);
+		} else {
+			generatedInterval = 0;
+		}
 		return super.getInterval() + generatedInterval;
 	}
 }
